@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Token Inspector</title>
+  <script>
+    async function buscarToken() {
+      const address = document.getElementById("address").value;
+      const res = await fetch(`http://localhost:8000/api/token/${address}`);
+      const data = await res.json();
+
+      document.getElementById("resultado").innerText = JSON.stringify(data, null, 2);
+    }
+  </script>
+</head>
+<body>
+  <h1>Token Inspector</h1>
+  <input type="text" id="address" placeholder="Endereço do contrato" />
+  <button onclick="buscarToken()">Analisar</button>
+  <pre id="resultado"></pre>
+</body>
+</html>
